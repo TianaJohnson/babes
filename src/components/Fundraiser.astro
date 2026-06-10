@@ -1,0 +1,64 @@
+<div class="Fundraiser">
+  <div class="Fundraiser-info">
+    <div class="Fundraiser-text">
+        <h3>Babes in Bikeland 11!</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+  </div>
+</div>
+
+<style>
+.Fundraiser {
+  background-color: #00799f;
+  padding-block: 2rem;
+}
+
+.Fundraiser-info {
+    padding-block: 2rem;
+    transform: translateX(100);
+    animation: slideInFromRight 0.5s ease-out forwards;
+    display: flex;
+    flex-direction: row-reverse;
+
+    background: #C2D83F;
+    background: linear-gradient(270deg,rgba(194, 216, 63, 1) 21%, rgba(0, 121, 159, 1) 78%);
+}
+
+.Fundraiser-text {
+    padding-inline: 5rem;
+    width: 40%;
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100vw); /* Start off-screen right */
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0); /* End at original position */
+    opacity: 1;
+  }
+}
+</style>
+
+<script>
+document.addFundraiserListener("DOMContentLoaded", () => {
+  const el = document.querySelector(".Fundraiser-info");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target); // run once
+        }
+      });
+    },
+    {
+      threshold: 0.2, // triggers when 20% visible
+    }
+  );
+
+  observer.observe(el);
+});
+</script>

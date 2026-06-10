@@ -1,0 +1,157 @@
+---
+import Title from "../assets/babestitle.svg";
+import Events from "../assets/events.svg";
+import Fundraiser from "../assets/fundraiser.svg";
+import History from "../assets/history.svg";
+import ContactUs from "../assets/contact.svg";
+import Burger from "../assets/hamburger.svg";
+---
+
+<div class="nav">
+  <a class="title-logo" href="#">
+    <img src={Title.src} alt="Babes in Bikeland" />
+  </a>
+
+  <div class="nav-list">
+    <a href="#"><img src={Events.src} alt="Events" /></a>
+    <a href="#"><img src={Fundraiser.src} alt="Fundraiser" /></a>
+    <a href="#"><img src={History.src} alt="History" /></a>
+    <a href="#"><img src={ContactUs.src} alt="Contact" /></a>
+  </div>
+
+  <button class="hamburger" id="hamburger">
+    <img src={Burger.src} alt="Menu" />
+  </button>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#"><img src={Events.src} alt="Events" /></a>
+    <a href="#"><img src={Fundraiser.src} alt="Fundraiser" /></a>
+    <a href="#"><img src={History.src} alt="History" /></a>
+    <a href="#"><img src={ContactUs.src} alt="Contact" /></a>
+  </div>
+</div>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: #4d285a;
+    padding: 1rem;
+  }
+
+  /* TITLE */
+
+  .title-logo {
+    flex-shrink: 0;
+  }
+
+  .title-logo img {
+    display: block;
+    height: clamp(50px, 6vw, 95px);
+    width: auto;
+  }
+
+  /* DESKTOP NAV */
+
+  .nav-list {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-inline: 1rem;
+  }
+
+  .nav-list a {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-list img {
+    display: block;
+    height: clamp(30px, 4vw, 55px);
+    width: auto;
+  }
+
+  /* HAMBURGER */
+
+  .hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .hamburger img {
+    height: 40px;
+    width: auto;
+  }
+
+  /* MOBILE MENU */
+
+  .mobile-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    width: 100%;
+    background: #4d285a;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    overflow: hidden;
+    max-height: 0;
+
+    transition: max-height 0.3s ease;
+  }
+
+  .mobile-menu a {
+    padding: 1rem;
+  }
+
+  .mobile-menu img {
+    height: 40px;
+    width: auto;
+  }
+
+  .mobile-menu.active {
+    max-height: 400px;
+  }
+
+  /* TABLET + MOBILE */
+
+  @media (max-width: 1000px) {
+    .nav {
+      padding: 1rem;
+    }
+
+    .nav-list {
+      display: none;
+    }
+
+    .hamburger {
+      display: block;
+    }
+
+    .title-logo img {
+      height: 60px;
+    }
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const hamburger = document.getElementById("hamburger");
+    const menu = document.getElementById("mobileMenu");
+
+    hamburger?.addEventListener("click", () => {
+      menu?.classList.toggle("active");
+    });
+  });
+</script>

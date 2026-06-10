@@ -1,0 +1,37 @@
+---
+import background from '../assets/babesbw.svg';
+---
+
+<div class="Hero">
+    <img id="background" src={background.src} alt="" fetchpriority="high" />
+</div>
+
+<style>
+    .Hero {
+        background : -moz-linear-gradient(50% 0% -90deg,rgba(77, 40, 90, 1) 2.81%,rgba(117, 91, 152, 1) 42.23%,rgba(0, 121, 159, 1) 82.96%);
+        background : -webkit-linear-gradient(-90deg, rgba(77, 40, 90, 1) 2.81%, rgba(117, 91, 152, 1) 42.23%, rgba(0, 121, 159, 1) 82.96%);
+        background : -webkit-gradient(linear,50% 0% ,50% 100% ,color-stop(0.0281,rgba(77, 40, 90, 1) ),color-stop(0.4223,rgba(117, 91, 152, 1) ),color-stop(0.8296,rgba(0, 121, 159, 1) ));
+        background : -o-linear-gradient(-90deg, rgba(77, 40, 90, 1) 2.81%, rgba(117, 91, 152, 1) 42.23%, rgba(0, 121, 159, 1) 82.96%);
+        background : -ms-linear-gradient(-90deg, rgba(77, 40, 90, 1) 2.81%, rgba(117, 91, 152, 1) 42.23%, rgba(0, 121, 159, 1) 82.96%);
+        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#4D285A', endColorstr='#00799F' ,GradientType=0)";
+        background : linear-gradient(180deg, rgba(77, 40, 90, 1) 2.81%, rgba(117, 91, 152, 1) 42.23%, rgba(0, 121, 159, 1) 82.96%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4D285A',endColorstr='#00799F' , GradientType=0);
+        display: flex;
+        justify-content: center;
+        img {
+                /* position: absolute; */
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: transparent;
+                color:aquamarine;
+
+                @media (min-width: 1200px) {
+                    width: 50%;
+                    height: 50%;
+                }
+            }
+        }
+
+</style>
