@@ -19,8 +19,8 @@ import Burger from "../assets/hamburger.svg";
     <a href="#"><img src={ContactUs.src} alt="Contact" /></a>
   </div>
 
-  <button class="hamburger" id="hamburger">
-    <img src={Burger.src} alt="Menu" />
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <img src={Burger.src} alt="" />
   </button>
 
   <div class="mobile-menu" id="mobileMenu">
@@ -32,6 +32,11 @@ import Burger from "../assets/hamburger.svg";
 </div>
 
 <style>
+  .nav,
+  .mobile-menu {
+    box-sizing: border-box;
+  }
+
   .nav {
     position: sticky;
     top: 0;
@@ -40,30 +45,29 @@ import Burger from "../assets/hamburger.svg";
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 2rem;
 
+    width: 100%;
     background: #4d285a;
     padding: 1rem;
   }
 
-  /* TITLE */
-
   .title-logo {
-    flex-shrink: 0;
+    flex: 1;
+    min-width: 0;
   }
 
   .title-logo img {
     display: block;
-    height: clamp(50px, 6vw, 95px);
-    width: auto;
+    width: min(100%, 720px);
+    height: auto;
   }
-
-  /* DESKTOP NAV */
 
   .nav-list {
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding-inline: 1rem;
+    flex-shrink: 0;
   }
 
   .nav-list a {
@@ -77,21 +81,20 @@ import Burger from "../assets/hamburger.svg";
     width: auto;
   }
 
-  /* HAMBURGER */
-
   .hamburger {
     display: none;
+    flex-shrink: 0;
     background: none;
     border: none;
     cursor: pointer;
+    padding: 0;
   }
 
   .hamburger img {
+    display: block;
     height: 40px;
     width: auto;
   }
-
-  /* MOBILE MENU */
 
   .mobile-menu {
     position: absolute;
@@ -124,10 +127,9 @@ import Burger from "../assets/hamburger.svg";
     max-height: 400px;
   }
 
-  /* TABLET + MOBILE */
-
   @media (max-width: 1000px) {
     .nav {
+      gap: 1rem;
       padding: 1rem;
     }
 
@@ -136,11 +138,18 @@ import Burger from "../assets/hamburger.svg";
     }
 
     .hamburger {
-      display: block;
+      display: flex;
+      align-items: center;
+    }
+
+    .hamburger img {
+      height: 38px;
+      width: auto;
     }
 
     .title-logo img {
-      height: 60px;
+      width: 100%;
+      height: auto;
     }
   }
 </style>
